@@ -1,0 +1,13 @@
+body {
+    background-color: #f8f9fa;
+    opacity: .8;
+    transition: opacity 0.25s ease-in-out;
+}
+
+body.page-loaded {
+    opacity: 1;
+}
+
+.container {
+    margin-top: 40px;
+}

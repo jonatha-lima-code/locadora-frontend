@@ -11,6 +11,9 @@
 </head>
 <body>
 
+<!-- Navbar-->
+<div id="navbar"></div>
+
 <div class="container mt-4">
     <h2 class="mb-4">📦 Cadastro de Equipamentos</h2>
 
@@ -109,6 +112,14 @@
 <script src="../js/equipamentos/equipamentos.api.js"></script>
 <script src="../js/equipamentos/equipamentos.dom.js"></script>
 <script src="../js/equipamentos/equipamentos.page.js"></script>
+
+<script src="../js/shared/loader.js"></script>
+
+<script>
+    carregarComponente("navbar", "../components/navbar.html");
+</script>
+<script src="../js/shared/page-transition.js"></script>
+
 
 </body>
 </html>
