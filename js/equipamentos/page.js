@@ -1,8 +1,16 @@
-document.addEventListener("DOMContentLoaded", listarEquipamentos);
+function initEquipamentosPage() {
+    listarEquipamentos();
 
-document
-    .getElementById("equipamentoForm")
-    .addEventListener("submit", cadastrarEquipamento);
+    document
+        .getElementById("equipamentoForm")
+        .addEventListener("submit", cadastrarEquipamento);
+
+    document
+        .getElementById("btnConfirmarExcluir")
+        .addEventListener("click", confirmarExclusao);
+
+    btnCancelarEdicao.addEventListener("click", cancelarEdicao);
+}
 
 function cadastrarEquipamento(e) {
     e.preventDefault();
@@ -31,7 +39,6 @@ function cadastrarEquipamento(e) {
         .catch(err => alert(err.message));
 }
 
-    
 
 function listarEquipamentos() {
     listarEquipamentosAPI()
@@ -48,9 +55,6 @@ function abrirModalExcluir(id) {
 
     modal.show();
 }
-document
-    .getElementById("btnConfirmarExcluir")
-    .addEventListener("click", confirmarExclusao);
 
     function confirmarExclusao() {
         if (!equipamentoIdParaExcluir) return;
@@ -107,9 +111,6 @@ function alterarModoEdicao(editando) {
         btnCancelarEdicao.classList.add("d-none");
     }
 }
-
-
-btnCancelarEdicao.addEventListener("click", cancelarEdicao);
 
 function cancelarEdicao() {
     equipamentoIdEmEdicao = null;
