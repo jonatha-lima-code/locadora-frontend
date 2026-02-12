@@ -1,15 +1,24 @@
 function initEquipamentosPage() {
+    mapearDomEquipamentos();
+    bindEventosEquipamentos();
     listarEquipamentos();
+}
 
-    document
-        .getElementById("equipamentoForm")
-        .addEventListener("submit", cadastrarEquipamento);
+function bindEventosEquipamentos() {
+    const form = document.getElementById("equipamentoForm");
+    const btnConfirmar = document.getElementById("btnConfirmarExcluir");
 
-    document
-        .getElementById("btnConfirmarExcluir")
-        .addEventListener("click", confirmarExclusao);
+    if (form) {
+        form.addEventListener("submit", cadastrarEquipamento);
+    }
 
-    btnCancelarEdicao.addEventListener("click", cancelarEdicao);
+    if (btnConfirmar) {
+        btnConfirmar.addEventListener("click", confirmarExclusao);
+    }
+
+    if (btnCancelarEdicao) {
+        btnCancelarEdicao.addEventListener("click", cancelarEdicao);
+    }
 }
 
 function cadastrarEquipamento(e) {
@@ -39,7 +48,6 @@ function cadastrarEquipamento(e) {
         .catch(err => alert(err.message));
 }
 
-
 function listarEquipamentos() {
     listarEquipamentosAPI()
         .then(renderizarTabela)
@@ -56,24 +64,20 @@ function abrirModalExcluir(id) {
     modal.show();
 }
 
-    function confirmarExclusao() {
-        if (!equipamentoIdParaExcluir) return;
-    
-        excluirEquipamentoAPI(equipamentoIdParaExcluir)
-            .then(() => {
-                equipamentoIdParaExcluir = null;
-    
-                // 🔄 atualiza somente a tabela
-                listarEquipamentos();
-    
-                // ❌ fecha o modal
-                const modalEl = document.getElementById("modalExcluir");
-                const modal = bootstrap.Modal.getInstance(modalEl);
-                modal.hide();
-            })
-            .catch(err => alert(err.message));
-    }
-    
+function confirmarExclusao() {
+    if (!equipamentoIdParaExcluir) return;
+
+    excluirEquipamentoAPI(equipamentoIdParaExcluir)
+        .then(() => {
+            equipamentoIdParaExcluir = null;
+            listarEquipamentos();
+
+            const modalEl = document.getElementById("modalExcluir");
+            const modal = bootstrap.Modal.getInstance(modalEl);
+            modal.hide();
+        })
+        .catch(err => alert(err.message));
+}
 
 function editarEquipamento(id) {
     listarEquipamentosAPI()
@@ -87,12 +91,7 @@ function editarEquipamento(id) {
             tipo.value = equipamento.tipo;
             descricao.value = equipamento.descricao;
             status.value = equipamento.status;
-
-            if (equipamento.categoriaId) {
-                categoriaId.value = equipamento.categoriaId;
-            } else {
-                categoriaId.value = "";
-            }
+            categoriaId.value = equipamento.categoriaId ?? "";
 
             alterarModoEdicao(true);
         });
@@ -101,13 +100,11 @@ function editarEquipamento(id) {
 function alterarModoEdicao(editando) {
     if (editando) {
         btnSalvar.textContent = "✏️ Atualizar Equipamento";
-        btnSalvar.classList.remove("btn-primary");
-        btnSalvar.classList.add("btn-warning");
+        btnSalvar.classList.replace("btn-primary", "btn-warning");
         btnCancelarEdicao.classList.remove("d-none");
     } else {
         btnSalvar.textContent = "💾 Cadastrar Equipamento";
-        btnSalvar.classList.remove("btn-warning");
-        btnSalvar.classList.add("btn-primary");
+        btnSalvar.classList.replace("btn-warning", "btn-primary");
         btnCancelarEdicao.classList.add("d-none");
     }
 }

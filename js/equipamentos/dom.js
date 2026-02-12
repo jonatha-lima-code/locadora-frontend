@@ -1,15 +1,27 @@
-const identificacao = document.getElementById("identificacao");
-const tipo = document.getElementById("tipo");
-const descricao = document.getElementById("descricao");
-const status = document.getElementById("status");
-const categoriaId = document.getElementById("categoriaId");
-const tabela = document.getElementById("equipamentosTable");
+let identificacao;
+let tipo;
+let descricao;
+let status;
+let categoriaId;
+let tabela;
 
 let equipamentoIdParaExcluir = null;
-let equipamentoIdEmEdicao = null; // ✅ FALTAVA
+let equipamentoIdEmEdicao = null;
 
-const btnSalvar = document.getElementById("btnSalvar");
-const btnCancelarEdicao = document.getElementById("btnCancelarEdicao");
+let btnSalvar;
+let btnCancelarEdicao;
+
+function mapearDomEquipamentos() {
+    identificacao = document.getElementById("identificacao");
+    tipo = document.getElementById("tipo");
+    descricao = document.getElementById("descricao");
+    status = document.getElementById("status");
+    categoriaId = document.getElementById("categoriaId");
+    tabela = document.getElementById("equipamentosTable");
+
+    btnSalvar = document.getElementById("btnSalvar");
+    btnCancelarEdicao = document.getElementById("btnCancelarEdicao");
+}
 
 function renderizarTabela(lista) {
     tabela.innerHTML = "";
