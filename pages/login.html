@@ -1,0 +1,67 @@
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="card shadow p-4" style="width: 100%; max-width: 420px;">
+        
+        <div class="text-center mb-4">
+            <h3 class="mb-1">🔐 Acesso ao Sistema</h3>
+            <small class="text-muted">Entre com suas credenciais</small>
+        </div>
+
+        <!-- FORM LOGIN -->
+        <form id="loginForm">
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input 
+                    type="email" 
+                    class="form-control" 
+                    id="email" 
+                    placeholder="seu@email.com"
+                    required
+                />
+            </div>
+
+            <div class="mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input 
+                    type="password" 
+                    class="form-control" 
+                    id="senha" 
+                    placeholder="••••••••"
+                    required
+                />
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mb-3">
+                Entrar
+            </button>
+        </form>
+
+        <!-- DIVISOR -->
+        <div class="text-center mb-3">
+            <small class="text-muted">ou</small>
+        </div>
+
+        <!-- LOGIN GOOGLE -->
+        <button 
+            class="btn btn-outline-dark w-100 mb-3"
+            id="btnLoginGoogle"
+        >
+            <img 
+                src="https://developers.google.com/identity/images/g-logo.png" 
+                width="18" 
+                class="me-2"
+            />
+            Entrar com Google
+        </button>
+
+        <!-- CADASTRO -->
+        <div class="text-center mt-3">
+            <small>
+                Não tem conta?
+                <a href="#" onclick="navegar('cadastro')">
+                    Criar conta
+                </a>
+            </small>
+        </div>
+
+    </div>
+</div>

@@ -10,6 +10,12 @@ async function inicializarPagina(pagina) {
         await importarScriptsEquipamentos();
         initEquipamentosPage();
     }
+
+    if (pagina === "login") {
+        await carregarScript("js/login/api.js");
+        await carregarScript("js/login/page.js");
+        initLoginPage();
+    }
 }
 
 async function importarScriptsEquipamentos() {
