@@ -9,6 +9,9 @@ async function navegar(pagina) {
     }
 
     await carregarHTML(`pages/${pagina}.html`, "content");
+
+    atualizarNavbar();
+
     await inicializarPagina(pagina);
 }
 
@@ -82,5 +85,53 @@ function carregarScriptOnce(src) {
         };
         script.onerror = reject;
         document.body.appendChild(script);
+    });
+}
+
+function atualizarNavbar() {
+    const navbar = document.getElementById("navbar");
+
+    if (!navbar) return;
+
+    carregarHTML("components/navbar.html", "navbar")
+        .then(() => {
+
+            const linksContainer = document.getElementById("navbar-links");
+
+            if (!isAuthenticated()) {
+                linksContainer.innerHTML = "";
+                return;
+            }
+
+            const auth = getAuth();
+
+            linksContainer.innerHTML = `
+                <a class="nav-link" href="#" data-page="home">Home</a>
+                <a class="nav-link" href="#" data-page="equipamentos">Equipamentos</a>
+                <a class="nav-link" href="#" data-page="meu-acesso">Meu Acesso</a>
+
+                <span class="navbar-text text-white ms-3 me-2">
+                    ${auth.usuario.nome}
+                </span>
+
+                <button class="btn btn-outline-light btn-sm" id="btnLogout">
+                    Sair
+                </button>
+            `;
+
+            configurarLinksNavbar();
+
+            document
+                .getElementById("btnLogout")
+                ?.addEventListener("click", logout);
+        });
+}
+
+function configurarLinksNavbar() {
+    document.querySelectorAll("[data-page]").forEach(link => {
+        link.addEventListener("click", e => {
+            e.preventDefault();
+            navegar(link.dataset.page);
+        });
     });
 }

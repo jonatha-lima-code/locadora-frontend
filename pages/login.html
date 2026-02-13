@@ -1,63 +1,45 @@
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 75vh;">
-    <div class="card shadow p-4" style="width: 100%; max-width: 420px;">
+<div class="row justify-content-center">
+    <div class="col-md-5">
 
-        <div class="text-center mb-4">
-            <h3 class="mb-1">🔐 Acesso ao Sistema</h3>
-            <small class="text-muted">
-                Use suas credenciais para entrar
-            </small>
-        </div>
+        <h3 class="mb-3">Login</h3>
 
-        <!-- FORM LOGIN -->
         <form id="loginForm">
-
             <div class="mb-3">
-                <label class="form-label">E-mail</label>
-                <input
-                    type="email"
-                    id="email"
-                    class="form-control"
-                    placeholder="admin@email.com"
-                    required
-                />
+                <label>Email</label>
+                <input type="email" id="loginEmail" class="form-control" required>
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Senha</label>
-                <input
-                    type="password"
-                    id="senha"
-                    class="form-control"
-                    placeholder="123456"
-                    required
-                />
+                <label>Senha</label>
+                <input type="password" id="loginSenha" class="form-control" required>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100 mb-3">
+            <button class="btn btn-primary w-100">
                 Entrar
             </button>
-
         </form>
 
-        <!-- DIVISOR -->
-        <div class="text-center mb-3">
-            <small class="text-muted">ou</small>
-        </div>
+        <hr class="my-4">
 
-        <!-- LOGIN GOOGLE -->
-        <button
-            id="btnGoogle"
-            class="btn btn-outline-dark w-100 mb-3"
-        >
-            Entrar com Google
-        </button>
+        <!-- <h4>Criar conta</h4>
 
-        <!-- MOCK INFO -->
-        <div class="alert alert-info mt-3 small">
-            <strong>Modo Mock:</strong><br>
-            Email: <code>admin@email.com</code><br>
-            Senha: <code>123456</code>
-        </div>
+        <form id="registerForm">
+            <div class="mb-2">
+                <input type="text" id="registerNome" class="form-control" placeholder="Nome" required>
+            </div>
+
+            <div class="mb-2">
+                <input type="email" id="registerEmail" class="form-control" placeholder="Email" required>
+            </div>
+
+            <div class="mb-2">
+                <input type="password" id="registerSenha" class="form-control" placeholder="Senha" required>
+            </div>
+
+            <button class="btn btn-success w-100">
+                Cadastrar
+            </button>
+        </form> -->
 
     </div>
 </div>

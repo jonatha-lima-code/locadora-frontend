@@ -1,8 +1,5 @@
 const AUTH_API_URL = "http://localhost:8080/auth";
 
-/**
- * Login com email e senha
- */
 function loginAPI(payload) {
     return fetch(`${AUTH_API_URL}/login`, {
         method: "POST",
@@ -19,10 +16,22 @@ function loginAPI(payload) {
     });
 }
 
-/**
- * Login com Google (OAuth)
- * Backend controla tudo
- */
-function loginGoogle() {
-    window.location.href = `${AUTH_API_URL}/google`;
+function registerAPI(payload) {
+    return fetch(`${AUTH_API_URL}/register`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error("Erro ao cadastrar usuário");
+            }
+            return res.json();
+        });
 }
+
+// function loginGoogle() {
+//     window.location.href = `${AUTH_API_URL}/google`;
+// }
